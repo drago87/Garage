@@ -10,7 +10,9 @@ namespace Garage
     {
         static void Main(string[] args)
         {
-            Garage FirstGarage = new Garage(10);
+            Garage1<Vehicle> FirstGarage = new Garage1<Vehicle>(10);
+
+
             while (true)
             {
                 Console.Clear();

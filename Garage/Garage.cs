@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Garage
 {
-    class Garage
+    class Garage1<T> : IEnumerable<T> where T : Vehicle
     {
         SaveLoad saveLoad = new SaveLoad();
         List<Vehicle> fordon = new List<Vehicle>();
         int maxNumberOfVehicles;
         
 
-        public Garage(int GarageSice)
+        public Garage1(int GarageSice)
         {
             maxNumberOfVehicles = GarageSice;
             try
@@ -219,6 +219,19 @@ namespace Garage
             }
             
 
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (T item in fordon)
+            {
+                yield return item;
+            }
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }
