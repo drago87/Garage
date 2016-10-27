@@ -11,6 +11,10 @@ namespace Garage
     {
         public void PrintVehiclesToFile(List<Vehicle> list, string thefile)
         {
+            if (!Directory.Exists(thefile))
+            {
+                Directory.CreateDirectory(@"../TestFolder");
+            }
             if (File.Exists(thefile))
             {
                 File.Delete(thefile);
@@ -34,13 +38,18 @@ namespace Garage
 
         public List<Vehicle> ReadVehicleFromFile(string thefile)
         {
-            string[] lines = System.IO.File.ReadAllLines(thefile);
+
+            if (!Directory.Exists(thefile))
+            {
+                Directory.CreateDirectory(@"../TestFolder");
+            }
             if (!File.Exists(thefile))
             {
                 var myFile = File.Create(thefile);
                 myFile.Close();
                 
             }
+            string[] lines = System.IO.File.ReadAllLines(thefile);
             //Vehicle tempV = new Vehicle;
             List<Vehicle> tempList = new List<Vehicle>();
             char[] MyChar = { 'N','u','m','b','e','r',' ','o','f','W','h','l','s'};

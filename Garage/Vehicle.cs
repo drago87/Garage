@@ -8,6 +8,7 @@ namespace Garage
 {
     class Vehicle
     {
+
         public string REGNR { get; set; }
         public string Color { get; set; }
         public int Wheels { get; set; }
